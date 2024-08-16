@@ -1,0 +1,75 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Create public and private subnets in multiple availability zones
+
+Parameters:
+  VPCId:
+    Description: VPC ID where subnets will be created
+    Type: AWS::EC2::VPC::Id
+
+Resources:
+  # Public Web Subnet - AZ1
+  PublicWebSubnetAZ1:
+    Type: AWS::EC2::Subnet
+    Properties: 
+      VpcId: !Ref VPCId
+      CidrBlock: 10.0.0.0/24
+      AvailabilityZone: us-east-1a
+      Tags:
+        - Key: Name
+          Value: Public-Web-Subnet-AZ-1
+  
+  # Private App Subnet - AZ1
+  PrivateAppSubnetAZ1:
+    Type: AWS::EC2::Subnet
+    Properties: 
+      VpcId: !Ref VPCId
+      CidrBlock: 10.0.1.0/24
+      AvailabilityZone: us-east-1a
+      Tags:
+        - Key: Name
+          Value: Private-App-Subnet-AZ-1
+
+  # Private DB Subnet - AZ1
+  PrivateDBSubnetAZ1:
+    Type: AWS::EC2::Subnet
+    Properties: 
+      VpcId: !Ref VPCId
+      CidrBlock: 10.0.2.0/24
+      AvailabilityZone: us-east-1a
+      Tags:
+        - Key: Name
+          Value: Private-DB-Subnet-AZ-1
+
+  # Public Web Subnet - AZ2
+  PublicWebSubnetAZ2:
+    Type: AWS::EC2::Subnet
+    Properties: 
+      VpcId: !Ref VPCId
+      CidrBlock: 10.0.3.0/24
+      AvailabilityZone: us-east-1b
+      Tags:
+        - Key: Name
+          Value: Public-Web-Subnet-AZ-2
+
+  # Private App Subnet - AZ2
+  PrivateAppSubnetAZ2:
+    Type: AWS::EC2::Subnet
+    Properties: 
+      VpcId: !Ref VPCId
+      CidrBlock: 10.0.4.0/24
+      AvailabilityZone: us-east-1b
+      Tags:
+        - Key: Name
+          Value: Private-App-Subnet-AZ-2
+
+  # Private DB Subnet - AZ2
+  PrivateDBSubnetAZ2:
+    Type: AWS::EC2::Subnet
+    Properties: 
+      VpcId: !Ref VPCId
+      CidrBlock: 10.0.5.0/24
+      AvailabilityZone: us-east-1b
+      Tags:
+        - Key: Name
+          Value: Private-DB-Subnet-AZ-2
+
